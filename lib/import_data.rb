@@ -14,12 +14,12 @@ class Import
   def create_player(player_hash)
     player = Player.new
     player.id = player_hash.fetch('id')
-    player.name_brif = player_hash.fetch('fullname')
+    player.name_brief = player_hash.fetch('fullname')
     player.first_name = player_hash.fetch('firstname')
     player.last_name = player_hash.fetch('lastname')
     player.position = player_hash.fetch('position')
     player.age = player_hash.fetch('age')
-
+    player.average_position_age_diff = player_hash.fetch('age')
     if player.save
       "player #{player_hash['id']}created"
     else
