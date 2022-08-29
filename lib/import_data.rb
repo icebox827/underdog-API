@@ -10,7 +10,6 @@ class Import
 
   def create_player(player_hash)
     player = Player.new
-    player.uuid = player_hash.fetch('id')
     player.first_name = player_hash.fetch('firstname')
     player.last_name = player_hash.fetch('lastname')
     player.position = player_hash.fetch('position')
