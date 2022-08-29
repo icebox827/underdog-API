@@ -1,15 +1,12 @@
-require 'json'
-require 'uri'
-
 class Import
+  require 'rest-client'
+  
   def get_data
     url = 'http://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=basketball&response_format=JSON'
     players = RestClient.get(url)
     player_hash = JSON.parse(players)
     create_player(player_hash)
   end
-
-  private
 
   def create_player(player_hash)
     player = Player.new
@@ -20,9 +17,9 @@ class Import
     player.age = player_hash.fetch('age')
 
     if player.save
-      "player created sucessfully"
+      "players created sucessfully"
     else
-      "player was not created"
+      "players was not created"
     end
   end
 end
