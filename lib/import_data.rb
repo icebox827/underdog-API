@@ -1,7 +1,7 @@
 class Import
   require 'rest-client'
-  
-  def get_data
+
+  def get_data.self
     url = 'http://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=basketball&response_format=JSON'
     players = RestClient.get(url)
     player_hash = JSON.parse(players)
@@ -17,9 +17,9 @@ class Import
     player.age = player_hash.fetch('age')
 
     if player.save
-      "players created sucessfully"
+      render json: { message: "players created sucessfully" }, status: :ok
     else
-      "players was not created"
+      render json: { error: player.errors.full_messages }, status: :unprocessable_entity
     end
   end
 end
