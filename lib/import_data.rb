@@ -16,7 +16,7 @@ class Import
     player.age = player_hash.fetch('age')
 
     if player.save
-      render json: { message: "players created sucessfully" }, status: :ok
+      render json: { message: 'players created sucessfully' }, status: :ok
     else
       render json: { error: player.errors.full_messages }, status: :unprocessable_entity
     end
