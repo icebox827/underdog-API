@@ -1,8 +1,10 @@
-module Api 
+module Api
   module V1
     class PlayersController < ApplicationController
-      def index; end
+      def show
+        player = Player.find(params[:id])
+        render json: player
+      end
     end
   end
 end
-
